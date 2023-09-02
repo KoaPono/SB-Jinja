@@ -1,15 +1,16 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1>Madlibs</h1>
-<form action="/story">
-  {% for prompt in prompts %}
-    <p>{{ prompt }}:
-      <input name="{{ prompt }}">
-    </p>
-  {% endfor %}
-  <button>Submit</button>
+<label for="story-select">Choose a story</label>
+
+<form action="/story_prompt">
+  <select name="story_id" id="story-select">
+    {% for story in stories %}
+    <option value="{{story.id}}">{{story.id}}</option>
+    {% endfor %}
+  </select>
+
+  <input type="submit" value="Begin Madlib" />
 </form>
 
 {% endblock %}
